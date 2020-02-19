@@ -102,8 +102,8 @@ class BenchmarkAllGetAPIs extends Simulation {
   setUp(
     scn.inject(
       nothingFor(2),
-      atOnceUsers(1),
-      rampUsers(1) during (1 seconds)
+      atOnceUsers(5),
+      rampUsers(45) during (45 seconds)
     ).protocols(httpProtocol)
   )
 
