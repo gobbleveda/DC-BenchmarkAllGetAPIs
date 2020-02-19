@@ -11,7 +11,7 @@ class BenchmarkAllGetAPIs extends Simulation {
 
   // 1 configure http base url
 
-  val httpProtocol = http.baseUrl("http://localhost:5000")
+  val httpProtocol = http.baseUrl("http://localhost:50000")
                          .header("Content-Type","application/json")
 
   //val csvFeeder = csv("/Users/amanmisra/Projects/Tutorials/PerformanceEngineering/gatling/DCGetAPIs/src/test/resources/data/new-user-registration-devcamp.csv").circular
