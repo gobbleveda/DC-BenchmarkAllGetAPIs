@@ -11,7 +11,7 @@ class BenchmarkAllGetAPIs extends Simulation {
 
   // 1 configure http base url
 
-  val httpProtocol = http.baseUrl("http://host.docker.internal")
+  val httpProtocol = http.baseUrl("http://dev.devcamper.com")
     .header("Content-Type", "application/json")
 
   //val csvFeeder = csv("/Users/amanmisra/Projects/Tutorials/PerformanceEngineering/gatling/DCGetAPIs/src/test/resources/data/new-user-registration-devcamp.csv").circular
