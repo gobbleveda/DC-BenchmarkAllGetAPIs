@@ -11,8 +11,8 @@ class BenchmarkAllGetAPIs extends Simulation {
 
   // 1 configure http base url
 
-  //val httpProtocol = http.baseUrl("http://host.docker.internal:5000")
-  val httpProtocol = http.baseUrl("http://amanmisra.io")
+  val httpProtocol = http.baseUrl("http://host.docker.internal:5000")
+  //val httpProtocol = http.baseUrl("http://amanmisra.io")
     .header("Content-Type", "application/json")
 
   //val csvFeeder = csv("/Users/amanmisra/Projects/Tutorials/PerformanceEngineering/gatling/DCGetAPIs/src/test/resources/data/new-user-registration-devcamp.csv").circular
@@ -104,7 +104,7 @@ class BenchmarkAllGetAPIs extends Simulation {
     scn.inject(
       nothingFor(2),
       atOnceUsers(5),
-      rampUsers(1000) during (120 seconds)
+      rampUsers(1000) during (240 seconds)
     ).protocols(httpProtocol)
   )
 
