@@ -5,7 +5,7 @@ import io.gatling.core.Predef._
 import scala.concurrent.duration._
 import io.gatling.core.structure.ChainBuilder
 
-class getsingleBootcamp extends Simulation {
+class GetSingleBootcamp extends Simulation {
 
   // http configuration
 
@@ -34,7 +34,8 @@ class getsingleBootcamp extends Simulation {
   setUp(
     scn.inject(
       nothingFor(5),
-      atOnceUsers((5))
+      atOnceUsers((5)),
+      rampUsers(100) during( 120 seconds)
     ).protocols(httpProtocol)
 
   )

@@ -41,7 +41,8 @@ class NewRegistrations extends Simulation {
   setUp(
     scn.inject(
       nothingFor(5),
-      atOnceUsers(1)
+      atOnceUsers(10),
+      rampUsers(50) during(300 seconds)
     ).protocols(httpProtocol)
   )
 
