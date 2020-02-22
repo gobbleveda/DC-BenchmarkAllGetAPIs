@@ -25,7 +25,7 @@ class BenchmarkAllGetAPIs extends Simulation {
         .post("/api/v1/auth/login")
         .check(jsonPath("$.success").is("true"))
         .check(status.in(200, 210))
-        .check(jsonPath("$.success").saveAs("token"))
+        .check(jsonPath("$.token").saveAs("token"))
 //        .body(StringBody("""{"email": "${email}", "password": "${password}"}""")).asJson)
           .check(bodyString.saveAs("responseBody"))
           .body(ElFileBody("bodies/UserTemplate.json")).asJson)
@@ -37,7 +37,8 @@ class BenchmarkAllGetAPIs extends Simulation {
 
   def getAllUsers() = {
  //   repeat(1) {
-      exec(http("Get All Users")
+      exec(
+        http("Get All Users")
         .get("/api/v1/users")
         .header("Cookie","token=${token}")
         .check(status.in(200, 210))
@@ -104,7 +105,7 @@ class BenchmarkAllGetAPIs extends Simulation {
     scn.inject(
       nothingFor(2),
       atOnceUsers(5),
-      rampUsers(1000) during (240 seconds)
+      rampUsers(5000) during (600 seconds)
     ).protocols(httpProtocol)
   )
 
