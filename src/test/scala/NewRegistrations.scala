@@ -33,15 +33,16 @@ class NewRegistrations extends Simulation {
   // scenario defintion
 
   val scn = scenario ("Register New Users")
-              .exec(registerNewUser())
-              .pause(3, 5)
+              .repeat(20)(
+                    exec(registerNewUser())
+                      .pause(3, 5))
 
   // Ramp-up defintion
 
   setUp(
     scn.inject(
       nothingFor(5),
-      atOnceUsers(10),
+    //  atOnceUsers(10),
       rampUsers(50) during(300 seconds)
     ).protocols(httpProtocol)
   )
