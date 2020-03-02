@@ -9,7 +9,7 @@ class NewRegistrations extends Simulation {
 
   // http configuration
 
-  val httpProtocol = http.baseUrl("http://host.docker.internal:5000")
+  val httpProtocol = http.baseUrl("http://nodejs:5000")
                          .header("Content-Type","application/json")
 
   val csvFeeder = csv("data/new-user-registration-devcamp.csv").queue
