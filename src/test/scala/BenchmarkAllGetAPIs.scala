@@ -11,7 +11,7 @@ class BenchmarkAllGetAPIs extends Simulation {
 
   // 1 configure http base url
 
-  val httpProtocol = http.baseUrl("http://host.docker.internal:5000")
+  val httpProtocol = http.baseUrl("http://localhost:5000")
   //val httpProtocol = http.baseUrl("http://amanmisra.io")
     .header("Content-Type", "application/json")
 
