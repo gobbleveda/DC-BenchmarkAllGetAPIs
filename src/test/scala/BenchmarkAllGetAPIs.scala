@@ -11,7 +11,7 @@ class BenchmarkAllGetAPIs extends Simulation {
 
   // 1 configure http base url
 
-  val httpProtocol = http.baseUrl("http://minikube:31456")
+  val httpProtocol = http.baseUrl("http://192.168.99.100:31456")
   //val httpProtocol = http.baseUrl("http://amanmisra.io")
     .header("Content-Type", "application/json")
 
