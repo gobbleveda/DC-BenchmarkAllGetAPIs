@@ -9,7 +9,7 @@ class GetSingleBootcamp extends Simulation {
 
   // http configuration
 
-  val httpProtocol = http.baseUrl("http://host.docker.internal:5000")
+  val httpProtocol = http.baseUrl("http://192.168.99.100:31456")
 
   // define functions
 
