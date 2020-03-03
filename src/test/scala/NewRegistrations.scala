@@ -9,7 +9,7 @@ class NewRegistrations extends Simulation {
 
   // http configuration
 
-  val httpProtocol = http.baseUrl("http://kubernetes.docker.internal:31456")
+  val httpProtocol = http.baseUrl("http://minikube:31456")
                          .header("Content-Type","application/json")
 
   val csvFeeder = csv("data/new-user-registration-devcamp.csv").queue

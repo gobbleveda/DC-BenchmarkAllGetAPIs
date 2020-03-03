@@ -9,7 +9,7 @@ class GetSingleBootcamp extends Simulation {
 
   // http configuration
 
-  val httpProtocol = http.baseUrl("http://kubernetes.docker.internal:31456")
+  val httpProtocol = http.baseUrl("http://minikube:31456")
 
   // define functions
 
