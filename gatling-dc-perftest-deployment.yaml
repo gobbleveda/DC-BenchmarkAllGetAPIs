@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: gatling-dc-perftest
+  name: gatling-dc-perftest
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      io.kompose.service: gatling-dc-perftest
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: gatling-dc-perftest
+    spec:
+      containers:
+      - args:
+        - -r
+        - gobbleveda-2019-bucket-3
+        env:
+        - name: GATLING_BASEURL
+          valueFrom:
+            configMapKeyRef:
+              key: GATLING_BASEURL
+              name: env
+        - name: REPORT_BUCKET
+          valueFrom:
+            configMapKeyRef:
+              key: REPORT_BUCKET
+              name: env
+        image: amanmisra/maven-gatling-aws:latest
+        imagePullPolicy: ""
+        name: dc-gatling-perftest
+        resources: {}
+        volumeMounts:
+        - mountPath: /root/.aws/credentials
+          name: gatling-dc-perftest-claim0
+          readOnly: true
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes:
+      - name: gatling-dc-perftest-claim0
+        persistentVolumeClaim:
+          claimName: gatling-dc-perftest-claim0
+          readOnly: true
+status: {}

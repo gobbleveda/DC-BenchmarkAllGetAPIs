@@ -6,13 +6,14 @@ import io.gatling.core.structure.ChainBuilder
 import scala.concurrent.duration._
 
 
-
 class BenchmarkAllGetAPIs extends Simulation {
 
   // 1 configure http base url
 
-  val httpProtocol = http.baseUrl("http://192.168.99.100:31456")
+  //val httpProtocol = http.baseUrl("http://localhost:5000")
   //val httpProtocol = http.baseUrl("http://amanmisra.io")
+  val baseUrl = sys.env.getOrElse("GATLING_BASEURL","http://host.docker.internal:5000").toString
+  val httpProtocol = http.baseUrl(baseUrl)
     .header("Content-Type", "application/json")
 
   //val csvFeeder = csv("/Users/amanmisra/Projects/Tutorials/PerformanceEngineering/gatling/DCGetAPIs/src/test/resources/data/new-user-registration-devcamp.csv").circular
@@ -105,7 +106,7 @@ class BenchmarkAllGetAPIs extends Simulation {
     scn.inject(
       nothingFor(2),
       atOnceUsers(5),
-      rampUsers(5000) during (600 seconds)
+      rampUsers(500) during (120 seconds)
     ).protocols(httpProtocol)
   )
 

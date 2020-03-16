@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  gatling-dc-perftest:
+    image: amanmisra/maven-gatling-aws:latest
+    command: -r gobbleveda-2019-bucket-3
+    container_name: dc-gatling-perftest
+    env_file: .env
+    environment:
+      - GATLING_BASEURL=$GATLING_BASEURL
+      - REPORT_BUCKET=$REPORT_BUCKET
+    volumes:
+      - /Users/amanmisra/.aws/credentials:/root/.aws/credentials:ro
+#    networks:
+#      - app-dev-network
+

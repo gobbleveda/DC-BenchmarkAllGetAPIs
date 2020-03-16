@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: dc-gatling-aws
+spec:
+  parallelism: 3
+  template:
+    spec:
+      containers:
+          - name: dc-devcamper-aws
+            image: amanmisra/maven-gatling-aws
+            env:
+              - name: GATLING_BASEURL
+                value: http://192.168.99.100:31456
+              - name: REPORT_BUCKET
+                value: gobbleveda-2019-bucket-3
+              - name: AWS_ACCESS_KEY_ID
+                value: AKIAXKLLX667FRCFMH2E
+              - name: AWS_SECRET_ACCESS_KEY
+                value: 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
+      restartPolicy: Never
+  backoffLimit: 2

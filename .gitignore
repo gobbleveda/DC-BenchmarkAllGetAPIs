@@ -24,6 +24,8 @@ build.log
 
 # misc
 .DS_Store
+*.old
+*.txt
 
 # project files to ignore
 !/results/.gitkeep
